@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Service {
+  Id         Int         @id @default(autoincrement())
+  Name       String      @unique
+  ShortName  String?
+  LongName   String
+  Icon       String
+  IconType   Int
+  CategoryId Int
+  Category   Category    @relation(fields: [CategoryId], references: [Id])
+  Attributes Attribute[]
+}
+
+model Category {
+  Id                Int       @id @default(autoincrement())
+  Name              String
+  GradientColorFrom String
+  GradientColorTo   String
+  Services          Service[]
+}
+
+model Attribute {
+  Id        Int     @id @default(autoincrement())
+  Name      String
+  ServiceId Int
+  Service   Service @relation(fields: [ServiceId], references: [Id])
+}

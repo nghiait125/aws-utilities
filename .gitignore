@@ -1,0 +1,6 @@
+.svelte-kit
+node_modules
+prisma/migrations
+prisma/database*
+.env
+package-lock.json
