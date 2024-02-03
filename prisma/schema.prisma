@@ -8,15 +8,16 @@ datasource db {
 }
 
 model Service {
-  Id         Int         @id @default(autoincrement())
-  Name       String      @unique
-  ShortName  String?
-  LongName   String
-  Icon       String
-  IconType   Int
-  CategoryId Int
-  Category   Category    @relation(fields: [CategoryId], references: [Id])
-  Attributes Attribute[]
+  Id          Int         @id @default(autoincrement())
+  Name        String      @unique
+  ShortName   String?
+  LongName    String
+  Description String?
+  Icon        String
+  IconType    Int
+  CategoryId  Int
+  Category    Category    @relation(fields: [CategoryId], references: [Id])
+  Attributes  Attribute[]
 }
 
 model Category {
@@ -28,8 +29,9 @@ model Category {
 }
 
 model Attribute {
-  Id        Int     @id @default(autoincrement())
-  Name      String
-  ServiceId Int
-  Service   Service @relation(fields: [ServiceId], references: [Id])
+  Id          Int     @id @default(autoincrement())
+  Name        String
+  Description String?
+  ServiceId   Int
+  Service     Service @relation(fields: [ServiceId], references: [Id])
 }

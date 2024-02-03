@@ -31,9 +31,6 @@
     <div class="flex">
       <span class="text-slate-400">{service.Category.Name}</span>
     </div>
-    <div class="flex">
-      A serverless compute service for running code without having to provision
-      or manage servers.
-    </div>
+    <div class="flex">{service.Description}</div>
   </div>
 </div>
